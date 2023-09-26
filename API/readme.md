@@ -8,7 +8,7 @@ Program Untuk Membuat Refresh Token
 
 Untuk menjalankan sistem ini instal seluruh library yang diperlukan, jalankan perintah ini.
 
-```
+```shell
 yarn install
 ```
 
@@ -23,13 +23,26 @@ ACCESS_TOKEN_SECRET = "128_char"
 
 Setelah mengatur environment, lakukan migrasi database menggunakan perintah:
 
-```
+```shell
 yarn db:migrate
+```
+
+Setelah melakukan migrasi buat data Role, data ini diperlukan karena setiap pengguna/user yang melakukan registrasi akan terikat dengan satu role. Role default adalah `USER`, anda juga perlu membuat role lain berupa `SUPERADMIN`, anda bisa menambahkan role sesuai kebutuhan anda. Untuk membuat role, anda bisa menggunkan perintah dibawah ini.
+
+```shell
+yarn db:create role user
+yarn db:create role superadmin
+```
+
+Anda juga dapat membuat superadmin/superuser melalui command line layaknya framwork lain seperti django. Untuk melakukan hal tersebut pastikan anda sudah memiliki role `SUPERADMIN` dan gunakan perintah dibawah ini.
+
+```shell
+yarn db:create superadmin your_username your_email your_password
 ```
 
 ## Api List
 
-Sistem ini memiliki beberapa endpoint, sistem ini memiliki fitur untuk registrasi, login, logout dan menu dashboard sederhana. Di bawah ini adalah daftar API yang tesedia.
+Sistem ini memiliki beberapa endpoint, sistem ini memiliki fitur untuk registrasi, login, logout dan menu dashboard sederhana. Di bawah ini adalah daftar API yang tesedia. [Tautan ini](https://documenter.getpostman.com/view/18796154/2s9YJXaQt7) akan membawa ke dokumen postman untuk mengakses API.
 
 ### API Dashboard
 

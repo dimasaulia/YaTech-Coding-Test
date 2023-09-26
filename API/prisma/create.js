@@ -26,7 +26,7 @@ async function main() {
             logger.info(" [i]: CREATING SUPER ADMIN");
             const username = args.slice(2)[1];
             const email = args.slice(2)[2];
-            const password = await bcrypt.hash(args.slice(2)[3], 10);
+            const password = await bcrypt.hash(args.slice(3)[3], 10);
             try {
                 await prisma.user.create({
                     data: {

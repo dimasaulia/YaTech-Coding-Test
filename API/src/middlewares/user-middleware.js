@@ -22,4 +22,14 @@ function logginRequired(req, res, next) {
     next();
 }
 
-module.exports = { logginRequired };
+function logoutRequired(req, res, next) {
+    const authorization = req.headers["authorization"];
+    if (String(authorization).length > 0 && authorization != undefined)
+        throw new CustomError(
+            HttpStatusCodes.statusForbidden,
+            "Please logout first to access this menu, or remove any data from Auhtorization Header"
+        );
+    next();
+}
+
+module.exports = { logginRequired, logoutRequired };
